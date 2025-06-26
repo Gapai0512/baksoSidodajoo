@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Konfirmasi Pesanan - Bakso Sidodajo</title>
+  <title>Konfirmasi Pesanan - Bakso Sidodadi</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
@@ -33,7 +33,7 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <i class="fas fa-utensils text-xl"></i>
-        <h1 class="font-bold text-lg">Bakso Sidodajo</h1>
+        <h1 class="font-bold text-lg">Bakso Sidodadi</h1>
       </div>
       <span class="text-sm">Konfirmasi Pesanan</span>
     </div>
@@ -95,8 +95,25 @@
           <i class="fas fa-money-bill-wave mr-2"></i>Pembayaran
         </div>
         <div class="p-4 space-y-2">
-          <label class="flex items-center space-x-3"><input type="radio" name="pembayaran" value="COD" checked class="h-4 w-4 text-red-600"> <span>Bayar di Tempat (Cash)</span></label>
-          <label class="flex items-center space-x-3"><input type="radio" name="pembayaran" value="Transfer" class="h-4 w-4 text-red-600"> <span>Transfer Bank</span></label>
+          <label class="flex items-center space-x-3">
+            <input type="radio" name="pembayaran" value="COD" checked class="h-4 w-4 text-red-600"> 
+            <span>Bayar di Tempat (Cash)</span>
+          </label>
+          <label class="flex items-center space-x-3">
+            <input type="radio" name="pembayaran" value="Transfer" class="h-4 w-4 text-red-600"> 
+            <span>Transfer Bank</span>
+          </label>
+          <label class="flex items-center space-x-3">
+            <input type="radio" name="pembayaran" value="QRIS" class="h-4 w-4 text-red-600"> 
+            <span>QRIS</span>
+          </label>
+          <div class="mt-2">
+            <p class="text-sm text-gray-600">Transfer Bank:</p>
+            <ul class="list-disc list-inside text-gray-600">
+              <li>BNI: 1234567890</li>
+              <li>BRI: 0987654321</li>
+            </ul>
+          </div>
         </div>
       </div>
 

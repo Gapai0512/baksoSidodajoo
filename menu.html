@@ -7,21 +7,32 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    .food-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px rgba(220, 38, 38, 0.2); }
-    .add-btn:hover { transform: scale(1.03); }
-    .badge { font-size: 0.75rem; }
-    .header-bg {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                  url('https://img-global.cpcdn.com/recipes/d5bb6f5187d8e734/400x400cq70/photo.jpg');
+    body {
+      background: url('https://source.unsplash.com/1600x900/?food,restaurant') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.5); /* Transparan hitam */
+    }
+    .food-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .food-card:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 10px 15px rgba(220, 38, 38, 0.2); 
+    }
+    .add-btn {
+      transition: transform 0.2s;
+    }
+    .add-btn:hover { 
+      transform: scale(1.05); 
     }
   </style>
 </head>
 <body class="bg-gray-50">
 
   <!-- Header -->
-  <header class="header-bg text-white shadow">
+  <header class="overlay text-white shadow">
     <div class="container mx-auto px-4 py-6">
       <div class="flex justify-between items-center">
         <div class="flex items-center">
@@ -104,7 +115,7 @@
         </div>
       </div>
 
-            <!-- Mie Ayam -->
+      <!-- Mie Ayam -->
       <div class="bg-white rounded-lg shadow-md overflow-hidden food-card">
         <img src="gambar/mie-ayam.jpg" alt="Mie Ayam" class="w-full h-48 object-cover" />
         <div class="p-4">
@@ -181,7 +192,7 @@
 
       <!-- Es Kelapa -->
       <div class="bg-white rounded-lg shadow-md overflow-hidden food-card">
-        <img src="images/es-kelapa.jpg" alt="Es Kelapa" class="w-full h-48 object-cover" />
+        <img src="gambar/es-kelapa.jpg" alt="Es Kelapa" class="w-full h-48 object-cover" />
         <div class="p-4">
           <h3 class="font-bold text-lg text-gray-800">Es Kelapa Muda</h3>
           <p class="text-gray-600 text-sm mb-2">Es kelapa muda asli dengan rasa manis alami.</p>
@@ -206,7 +217,7 @@
   <!-- Footer -->
   <footer class="bg-gray-800 text-white py-6 mt-20">
     <div class="container mx-auto text-center text-sm">
-      © 2025 Bakso Sidodadi — Dibuat dengan ❤️ oleh Gapai cinta giaa
+      © 2025 Bakso Sidodadi — Dibuat dengan ❤️ oleh Gapai untuk giaa
     </div>
   </footer>
 
