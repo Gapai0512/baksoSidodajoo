@@ -1,0 +1,25 @@
+document.getElementById('btn-kirim-pesanan').addEventListener('click', function () {
+  const nama = document.getElementById('nama-pemesan').value;
+  const hp = document.getElementById('nomor-hp').value;
+  const alamat = document.getElementById('alamat-pengiriman').value;
+  const catatan = document.getElementById('catatan-tambahan').value;
+  const metode = document.querySelector('input[name="pembayaran"]:checked').value;
+
+  let struk = `=== Struk Pesanan ===\n`;
+  struk += `Nama: ${nama}\nNo HP: ${hp}\nAlamat: ${alamat}\nMetode: ${metode}`;
+  if (catatan) struk += `\nCatatan: ${catatan}`;
+  struk += `\n\nPesanan:\n`;
+
+  let total = 0;
+  cart.forEach(item => {
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
+    struk += `- ${item.name} x${item.quantity} = Rp ${subtotal.toLocaleString('id-ID')}\n`;
+  });
+  struk += `\nTotal: Rp ${total.toLocaleString('id-ID')}\n=======================`;
+
+  localStorage.setItem('dataStruk', struk);
+  localStorage.removeItem('cart'); // kosongkan keranjang
+
+  window.location.href = 'struk.html';
+});

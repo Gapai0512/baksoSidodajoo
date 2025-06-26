@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Struk Pesanan - Bakso Sidodajo</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .card {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .text-red {
+      color: #ef4444; /* Warna merah */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <!-- Main Container -->
+  <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
+    
+    <!-- Informasi Restoran -->
+    <div class="text-center mb-6">
+      <h2 class="font-bold text-3xl text-black">Bakso Sidodajo</h2>
+      <p class="text-gray-600">Jalan Banyuasin</p>
+      <p class="text-gray-600">No Telp: 085267280536</p>
+      <p id="tanggal" class="text-sm text-gray-500 mt-2"></p>
+    </div>
+
+    <!-- Ringkasan Pesanan -->
+    <div class="card mb-6">
+      <div class="bg-red-600 text-white px-4 py-2 font-semibold rounded-t-lg">
+        <i class="fas fa-clipboard-list mr-2"></i>Detail Pesanan
+      </div>
+      <div id="detail-pesanan" class="p-4 space-y-3 text-sm">
+        <p class="text-gray-500 text-center py-4">
+          <i class="fas fa-shopping-basket text-3xl mb-2 text-gray-300"></i>
+          Tidak ada detail pesanan
+        </p>
+      </div>
+      <div class="border-t px-4 py-3 bg-gray-50 flex justify-between font-bold">
+        <span>Total Pembayaran</span>
+        <span id="total-harga" class="text-red">Rp 0</span>
+      </div>
+    </div>
+
+    <!-- Ucapan Terima Kasih -->
+    <div class="text-center">
+      <p class="text-lg font-semibold text-red">Terima kasih telah makan di Bakso Sidodajo!</p>
+      <p class="text-sm text-gray-600 mt-2">Kami berharap Anda menikmati hidangan kami.</p>
+      <p class="text-sm text-gray-600 mt-2">2025 ❤️ Gapai untuk Gia</p>
+    </div>
+  </div>
+
+  <script>
+    const detailPesanan = JSON.parse(localStorage.getItem('detailPesanan'));
+    if (detailPesanan) {
+      // Tampilkan detail pesanan
+      tampilkanDetailPesanan(detailPesanan.cart);
+    } else {
+      console.log("Detail pesanan tidak ditemukan di localStorage.");
+    }
+
+    function tampilkanDetailPesanan(cart) {
+      const detailPesananEl = document.getElementById('detail-pesanan');
+      let total = 0;
+
+      if (cart.length === 0) {
+        detailPesananEl.innerHTML = `<p>Tidak ada detail pesanan.</p>`;
+        return;
+      }
+
+      const itemsHTML = cart.map(item => {
+        const subtotal = item.price * item.quantity; // Hitung subtotal
+        total += subtotal; // Tambahkan subtotal ke total
+        return `
+          <div>
+            <span>${item.name} (Rp ${item.price.toLocaleString('id-ID')} × ${item.quantity})</span>
+            <span> = Rp ${subtotal.toLocaleString('id-ID')}</span>
+          </div>`;
+      }).join('');
+
+      detailPesananEl.innerHTML = itemsHTML;
+      document.getElementById('total-harga').textContent = `Rp ${total.toLocaleString('id-ID')}`; // Tampilkan total harga
+
+      // Tampilkan tanggal saat ini
+      const today = new Date();
+      document.getElementById('tanggal').textContent = today.toLocaleDateString('id-ID', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+  </script>
+</body>
+</html>
